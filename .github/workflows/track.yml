@@ -1,0 +1,52 @@
+name: Track venue events
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # every day around 06:17 Amsterdam time
+  workflow_dispatch:        # "Run workflow" button on the Actions tab
+    inputs:
+      force:
+        description: "Re-read every page even if unchanged"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: track
+  cancel-in-progress: false
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run tracker
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m tracker.main ${{ inputs.force && '--force' || '' }}
+
+      - name: Save results
+        run: |
+          git config user.name "event-tracker-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data REPORT.md
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update events $(date -u +%Y-%m-%d)"
+            git push
+          fi

@@ -1,0 +1,83 @@
+# Venues to watch. Add a venue by adding an entry; nothing else needs to change.
+#   name:  shown in the report
+#   city:  shown in the report
+#   urls:  agenda/calendar pages to read (several allowed, e.g. page 2 or another language)
+#   kind:  "venue" (a single location) or "directory" (a listing site covering many venues)
+
+- name: RAI Amsterdam
+  city: Amsterdam
+  kind: venue
+  urls:
+    - https://www.rai.nl/en/calendar
+
+- name: Jaarbeurs
+  city: Utrecht
+  kind: venue
+  urls:
+    - https://www.jaarbeurs.nl/agenda
+
+- name: Rotterdam Ahoy
+  city: Rotterdam
+  kind: venue
+  urls:
+    - https://www.ahoy.nl/agenda
+
+- name: MECC Maastricht
+  city: Maastricht
+  kind: venue
+  urls:
+    - https://www.mecc.nl/bezoeken/agenda/
+
+- name: World Forum The Hague
+  city: Den Haag
+  kind: venue
+  urls:
+    - https://worldforum.nl/agenda/
+
+- name: Beurs van Berlage
+  city: Amsterdam
+  kind: venue
+  urls:
+    - https://beursvanberlage.com/whats-on/
+
+- name: MartiniPlaza
+  city: Groningen
+  kind: venue
+  urls:
+    - https://www.martiniplaza.nl/nl/agenda
+
+- name: Expo Houten
+  city: Houten
+  kind: venue
+  urls:
+    - https://www.expohouten.nl/agenda/
+
+- name: Brabanthallen
+  city: "'s-Hertogenbosch"
+  kind: venue
+  urls:
+    - https://www.brabanthallen.nl/agenda
+
+- name: Evenementenhal
+  city: Gorinchem / Hardenberg
+  kind: venue
+  urls:
+    - https://www.evenementenhal.nl/
+
+- name: Maassilo
+  city: Rotterdam
+  kind: venue
+  urls:
+    - https://maassilo.com/agenda
+
+- name: Expo Haarlemmermeer
+  city: Vijfhuizen
+  kind: venue
+  urls:
+    - https://www.expohaarlemmermeer.nl/
+
+- name: EventsEye (NL trade fairs)
+  city: Netherlands
+  kind: directory
+  urls:
+    - https://www.eventseye.com/fairs/c1_trade-shows_netherlands.html
